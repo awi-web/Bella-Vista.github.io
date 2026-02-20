@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Vista - Authentische Italienische Küche in Wuppertal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C9A961;
+            --dark: #1C1C1C;
+            --cream: #FFF9F0;
+            --olive: #6B7F4A;
+            --wine: #8B3A3A;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.8;
+            background: var(--cream);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(28, 28, 28, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%236B7F4A"/><stop offset="100%" style="stop-color:%238B3A3A"/></linearGradient></defs><rect fill="url(%23g)" width="1200" height="800"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            color: white;
+            z-index: 1;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--gold);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold);
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+        
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        h2::after {
+            content: '❦';
+            display: block;
+            color: var(--gold);
+            font-size: 2rem;
+            margin: 1rem auto;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--olive), var(--wine));
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translate(-25%, -25%); }
+            50% { transform: translate(0, 0); }
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+        }
+        
+        /* Menu Section */
+        #menu {
+            background: linear-gradient(to bottom, #fff 0%, var(--cream) 100%);
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .menu-category h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--wine);
+            margin-bottom: 2.5rem;
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 1rem;
+        }
+        
+        .menu-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.8rem;
+        }
+        
+        .menu-item h4 {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--dark);
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        .price {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .menu-item p {
+            color: #666;
+            font-size: 1rem;
+            font-style: italic;
+        }
+        
+        /* Reservation Section */
+        #reservation {
+            background: linear-gradient(135deg, var(--dark), #2a2a2a);
+            color: white;
+        }
+        
+        #reservation h2 {
+            color: var(--gold);
+        }
+        
+        .reservation-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .reservation-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid rgba(201, 169, 97, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-item {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .contact-item-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--wine);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .contact-item p {
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        /* Social Media */
+        .social-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(107, 127, 74, 0.1), rgba(139, 58, 58, 0.1));
+            border-radius: 20px;
+        }
+        
+        .social-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--wine);
+            margin-bottom: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-10px) rotate(360deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .social-link.facebook { color: #1877F2; }
+        .social-link.instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color: white; }
+        .social-link.youtube { color: #FF0000; }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .footer-info {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-info p {
+            margin: 0.5rem 0;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 70px;
+            height: 70px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            text-decoration: none;
+            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.15);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .reservation-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">Bella Vista</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#menu">Speisekarte</a></li>
+                <li><a href="#reservation">Reservierung</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bella Vista</h1>
+            <p class="hero-subtitle">Authentische italienische Küche</p>
+            <a href="#reservation" class="btn">Tisch reservieren</a>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container">
+            <h2>Unsere Geschichte</h2>
+            <div class="about-content">
+                <div class="about-image">🍝</div>
+                <div class="about-text">
+                    <p>
+                        Willkommen im Bella Vista! Seit 1995 verwöhnen wir unsere Gäste mit authentischer 
+                        italienischer Küche und echter mediterraner Gastfreundschaft mitten in Wuppertal.
+                    </p>
+                    <p>
+                        Unsere Küche vereint traditionelle Rezepte aus verschiedenen Regionen Italiens mit 
+                        frischen, saisonalen Zutaten. Jedes Gericht wird mit Liebe und Leidenschaft von 
+                        unserem erfahrenen Küchenchef zubereitet.
+                    </p>
+                    <p>
+                        Bei uns finden Sie nicht nur exzellentes Essen, sondern auch eine warme, einladende 
+                        Atmosphäre - ganz wie in einer echten italienischen Trattoria. Lassen Sie sich von 
+                        uns verwöhnen und genießen Sie ein Stück Italien in Wuppertal!
+                    </p>
+                    <a href="#menu" class="btn">Zur Speisekarte</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="menu">
+        <div class="container">
+            <h2>Unsere Speisekarte</h2>
+            <div class="menu-grid">
+                <div class="menu-category">
+                    <h3>Antipasti</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Bruschetta Classica</h4>
+                            <span class="price">7,90€</span>
+                        </div>
+                        <p>Geröstetes Brot mit frischen Tomaten, Knoblauch und Basilikum</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Carpaccio di Manzo</h4>
+                            <span class="price">12,90€</span>
+                        </div>
+                        <p>Hauchdünnes Rindfleisch mit Rucola, Parmesan und Balsamico</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Antipasti Misti della Casa</h4>
+                            <span class="price">14,90€</span>
+                        </div>
+                        <p>Auswahl italienischer Vorspeisen für 2 Personen</p>
+                    </div>
+                </div>
+                
+                <div class="menu-category">
+                    <h3>Pasta Fresca</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Spaghetti Carbonara</h4>
+                            <span class="price">13,90€</span>
+                        </div>
+                        <p>Mit Guanciale, Ei und Pecorino Romano</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Tagliatelle al Salmone</h4>
+                            <span class="price">16,90€</span>
+                        </div>
+                        <p>Hausgemachte Bandnudeln mit Lachs in cremiger Sauce</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Lasagne al Forno</h4>
+                            <span class="price">14,90€</span>
+                        </div>
+                        <p>Traditionelle hausgemachte Lasagne mit Bolognese</p>
+                    </div>
+                </div>
+                
+                <div class="menu-category">
+                    <h3>Pizza Napoletana</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Pizza Margherita</h4>
+                            <span class="price">9,90€</span>
+                        </div>
+                        <p>San Marzano Tomaten, Mozzarella di Bufala, frisches Basilikum</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Pizza Quattro Stagioni</h4>
+                            <span class="price">13,90€</span>
+                        </div>
+                        <p>Vier Jahreszeiten mit Artischocken, Schinken, Pilzen und Oliven</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Pizza Diavola</h4>
+                            <span class="price">12,90€</span>
+                        </div>
+                        <p>Scharfe Salami, Peperoni, Zwiebeln und scharfe Sauce</p>
+                    </div>
+                </div>
+                
+                <div class="menu-category">
+                    <h3>Secondi Piatti</h3>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Saltimbocca alla Romana</h4>
+                            <span class="price">19,90€</span>
+                        </div>
+                        <p>Kalbsschnitzel mit Parmaschinken, Salbei und Weißweinsauce</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Branzino al Limone</h4>
+                            <span class="price">22,90€</span>
+                        </div>
+                        <p>Wolfsbarsch mit Zitrone und mediterranem Gemüse</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Ossobuco Milanese</h4>
+                            <span class="price">24,90€</span>
+                        </div>
+                        <p>Geschmorte Kalbshaxe mit Safran-Risotto</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="reservation">
+        <div class="container">
+            <div class="reservation-content">
+                <h2>Tisch reservieren</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+                    Sichern Sie sich jetzt Ihren Platz in unserem Restaurant. Wir freuen uns auf Ihren Besuch!
+                </p>
+                <div class="reservation-form">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Vorname</label>
+                                <input type="text" placeholder="Max" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nachname</label>
+                                <input type="text" placeholder="Mustermann" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>E-Mail</label>
+                                <input type="email" placeholder="max@beispiel.de" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Telefon</label>
+                                <input type="tel" placeholder="+49 123 456789" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Datum</label>
+                                <input type="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Uhrzeit</label>
+                                <input type="time" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Anzahl Personen</label>
+                            <select required>
+                                <option value="">Bitte wählen...</option>
+                                <option>1 Person</option>
+                                <option>2 Personen</option>
+                                <option>3 Personen</option>
+                                <option>4 Personen</option>
+                                <option>5 Personen</option>
+                                <option>6+ Personen</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Besondere Wünsche (optional)</label>
+                            <textarea rows="3" placeholder="z.B. Allergien, Hochstuhl, etc."></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Jetzt reservieren</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>Kontakt & Öffnungszeiten</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <h3>Adresse</h3>
+                    <p>Luisenstraße 45<br>42103 Wuppertal<br>Deutschland</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📞</div>
+                    <h3>Kontakt</h3>
+                    <p>Tel: 0202 123456<br>E-Mail: info@bellavista-wuppertal.de<br>WhatsApp: 0172 9876543</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">🕐</div>
+                    <h3>Öffnungszeiten</h3>
+                    <p>Dienstag - Sonntag<br>12:00 - 14:30 Uhr<br>17:30 - 22:30 Uhr<br><br><strong>Montag Ruhetag</strong></p>
+                </div>
+            </div>
+            
+            <div class="social-section">
+                <h3>Folgen Sie uns auf Social Media</h3>
+                <p>Bleiben Sie auf dem Laufenden über Specials, Events und neue Gerichte!</p>
+                <div class="social-links">
+                    <a href="https://facebook.com/bellavista" class="social-link facebook" target="_blank" title="Facebook">📘</a>
+                    <a href="https://instagram.com/bellavista" class="social-link instagram" target="_blank" title="Instagram">📷</a>
+                    <a href="https://youtube.com/bellavista" class="social-link youtube" target="_blank" title="YouTube">▶️</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p style="font-size: 1.2rem; color: var(--gold); margin-bottom: 1rem;">Bella Vista Ristorante</p>
+                    <p>Authentische italienische Küche seit 1995</p>
+                </div>
+                <p>&copy; 2025 Bella Vista. Alle Rechte vorbehalten.</p>
+                <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">
+                    Website erstellt von <strong style="color: var(--gold);">Hawi Hawaii - Web Developer</strong><br>
+                    📧 hawi.hawaii@outlook.de | 📱 WhatsApp verfügbar
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/491729876543?text=Hallo!%20Ich%20möchte%20einen%20Tisch%20reservieren." class="whatsapp-btn" title="WhatsApp Reservierung">
+        💬
+    </a>
+</body>
+</html>
